@@ -76,6 +76,48 @@ int Length(LNodes* L,int tou)
 }
 
 ////3、按值查找
+int LocateElem(LNodes* L, int tou,int e)
+{
+	LNodes* p;
+	int num = 0;
+	switch (tou)
+	{
+	case 1:
+		if (L->next != NULL)
+		{
+			p = L->next;
+			while (p)
+			{
+				if (p->data == e)
+				{
+					return num;
+				}
+				p = p->next;
+				num++;
+			}
+		}
+		break;
+	case 0:
+		if (L != NULL)
+		{
+			p = L;
+			while (p)
+			{
+				if (p->data == e)
+				{
+					return num;
+				}
+				p = p->next;
+				num++;
+			}
+		}
+		break;
+	default:
+		break;
+	}
+
+	return -1;
+}
 
 
 ////4、按序号查找

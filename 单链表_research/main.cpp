@@ -48,7 +48,8 @@ int a1[] = { 1,2,3,9,11,21,31,41,51,61,71 };
 int main()
 {
 	//test_LinkListInput();
-	test_Length();
+	//test_Length();
+	test_LocateElem();
 
 	return 0;
 }

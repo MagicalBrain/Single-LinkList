@@ -121,8 +121,131 @@ int LocateElem(LNodes* L, int tou,int e)
 
 
 ////4、按序号查找
+int GetElem(LNodes* L, int tou, int loca)
+{
+	LNodes* p;
+	int num = 0;
+	if (loca < 0)
+	{
+		return -1;
+	}
+	if (tou == 1)
+	{
+		if (L->next != NULL)
+		{
+			p = L->next;
+			while (p)
+			{
+				if (num == loca)
+					return p->data;
+				num++;
+				p = p->next;
+			}
+		}
+	}
+	else if (tou == 0)
+	{
+		if (L != NULL)
+		{
+			p = L;
+			while (p)
+			{
+				if (num == loca)
+					return p->data;
+				num++;
+				p = p->next;
+			}
+		}
+	}
+	return -1;
+}
 
 ////5、插入操作
+int LinkListInsert(LNodes* L, int tou, int e, int loca)
+{
+	LNodes* p, * q;
+	int num = 0;
+	if (loca < 0)
+	{
+		return -1;
+	}
+	if (tou == 1)
+	{
+		if (L->next != NULL)
+		{
+			p = L->next;
+
+			if (loca == 0)
+			{
+				q = (LNodes*)malloc(sizeof(LNodes));
+				q->data = e;
+
+				q->next = p->next;
+				p->next = q;
+
+				int t;
+				t = q->data;
+				q->data = p->data;
+				p->data = t;
+				return 1;
+			}
+
+			while (p)
+			{
+				num++;
+				if (num == loca)
+				{
+					q = (LNodes*)malloc(sizeof(LNodes));
+					q->data = e;
+
+					q->next = p->next;
+					p->next = q;
+					return 1;
+				}
+				
+				p = p->next;
+			}
+		}
+	}
+	else if (tou == 0)
+	{
+		if (L != NULL)
+		{
+			p = L;
+
+			if (loca == 0)
+			{
+				q = (LNodes*)malloc(sizeof(LNodes));
+				q->data = e;
+
+				q->next = p->next;
+				p->next = q;
+
+				int t;
+				t = q->data;
+				q->data = p->data;
+				p->data = t;
+				return 1;
+			}
+
+			while (p)
+			{
+				num++;
+				if (num == loca)
+				{
+					q = (LNodes*)malloc(sizeof(LNodes));
+					q->data = e;
+
+					q->next = p->next;
+					p->next = q;
+					return 1;
+				}
+				p = p->next;
+			}
+		}
+	}
+	return 0;
+}
 
 ////6、删除操作
 

@@ -108,9 +108,88 @@ int test_LocateElem()
 	cin >> e;
 	
 	int re = LocateElem(L, tou, e);
-	cout <<"位置为：\n"<< re << endl;
+	cout <<"位置为："<< re << endl;
 
 	return -1;
+}
+
+int test_GetElem()
+{
+	LNodes* L;
+	int tou, loca,re;
+	char in;
+
+	cout << "有无头结点[Y/N]：" << endl;
+	cin >> in;
+
+	switch (in)
+	{
+	case 'Y':
+		tou = 1;
+		break;
+	case 'N':
+		tou = 0;
+		break;
+	default:
+		break;
+	}
+
+	L = LinkedListInit(tou);
+	LinkedInput(L, tou);
+
+	cout << "输入位置序号" << endl;
+	cin >> loca;
+
+	re = GetElem(L, tou, loca);
+	cout << "位置为：" << re << endl;
+	return 0;
+}
+
+int test_LinkListInsert()
+{
+	LNodes* L;
+	int tou, loca, re,e;
+	char in;
+
+	cout << "有无头结点[Y/N]：" << endl;
+	cin >> in;
+
+	switch (in)
+	{
+	case 'Y':
+		tou = 1;
+		break;
+	case 'N':
+		tou = 0;
+		break;
+	default:
+		break;
+	}
+
+	L = LinkedListInit(tou);
+	LinkedInput(L, tou);
+
+	LinkedOutput(L, tou);
+
+	cout << "输入要插入的位置：" << endl;
+	cin >> loca;
+	cout << "输入键值：" << endl;
+	cin >> e;
+
+	re = LinkListInsert(L, tou, e, loca);
+
+	LinkedOutput(L, tou);
+
+	if (re)
+	{
+		cout << "插入成功！" << endl;
+	}
+	else
+	{
+		cout << "插入失败！" << endl;
+	}
+
+	return 0;
 }
 
 int test01()

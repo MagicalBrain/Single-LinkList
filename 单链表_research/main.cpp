@@ -49,7 +49,9 @@ int main()
 {
 	//test_LinkListInput();
 	//test_Length();
-	test_LocateElem();
+	//test_LocateElem();
+	//test_GetElem();
+	test_LinkListInsert();
 
 	return 0;
 }

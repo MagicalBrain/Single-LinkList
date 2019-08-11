@@ -51,7 +51,9 @@ int main()
 	//test_Length();
 	//test_LocateElem();
 	//test_GetElem();
-	test_LinkListInsert();
+	//test_LinkListInsert();
+	test_LinkListDelete();
+
 
 	return 0;
 }

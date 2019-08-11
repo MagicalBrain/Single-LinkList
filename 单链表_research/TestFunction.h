@@ -192,6 +192,52 @@ int test_LinkListInsert()
 	return 0;
 }
 
+int test_LinkListDelete()
+{
+	LNodes* L;
+	int tou, loca, re, e;
+	char in;
+
+	cout << "有无头结点[Y/N]：" << endl;
+	cin >> in;
+
+	switch (in)
+	{
+	case 'Y':
+		tou = 1;
+		break;
+	case 'N':
+		tou = 0;
+		break;
+	default:
+		break;
+	}
+
+	L = LinkedListInit(tou);
+	LinkedInput(L, tou);
+
+	LinkedOutput(L, tou);
+
+	cout << "输入要删除的位置：" << endl;
+	cin >> loca;
+	
+	re = LinkListDelete(L, tou, loca);
+
+	LinkedOutput(L, tou);
+
+	if (re)
+	{
+		cout << "删除掉的元素键值为：" << re << endl;
+		cout << "删除成功！" << endl;
+	}
+	else
+	{
+		cout << "删除失败！" << endl;
+	}
+
+	return 0;
+}
+
 int test01()
 {
 	return 0;

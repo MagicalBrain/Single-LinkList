@@ -248,6 +248,60 @@ int LinkListInsert(LNodes* L, int tou, int e, int loca)
 }
 
 ////6、删除操作
+int LinkListDelete(LNodes* L, int tou, int loca)
+{
+	LNodes* p, * q;
+	int num = 0, l=Length(L,tou),e;
+	if (loca < 0 || loca >= l)
+	{
+		return 0;
+	}
+	if (tou == 1)
+	{
+		if (L->next != NULL)
+		{
+			p = L->next;
+
+			while (p)
+			{
+				if (num-1 == loca)
+				{
+					q = p->next;
+					p->next = q->next;
+					e = q->data;
+					free(q);
+					return e;
+				}
+				num++;
+				p = p->next;
+			}
+			
+		}
+	}
+	else if (tou == 0)
+	{
+		if (L != NULL)
+		{
+			p = L;
+
+			while (p)
+			{
+				if (num - 1 == loca)
+				{
+					q = p->next;
+					p->next = q->next;
+					e = q->data;
+					free(q);
+					return e;;
+				}
+				num++;
+				p = p->next;
+			}
+			
+		}
+	}
+	return 0;
+}
 
 ////7、输出操作
 //输出链表内所有元素的数据

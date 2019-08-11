@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <string.h>
+#include "CreatFunction.h"
 
 using namespace std;
 
@@ -12,7 +13,9 @@ typedef struct LNodes
 	struct LNodes *next;
 } LNodes, *LinkedList;
 
-//初始化链表
+//基本操作：
+
+////1、初始化链表
 LinkedList LinkedListInit(int tou) {
 	/*参数:
 	tou:
@@ -31,6 +34,106 @@ LinkedList LinkedListInit(int tou) {
 		L = NULL;//将next设置为NULL,初始长度为0的单链表   
 	return L;
 }
+
+////2、求表长
+int Length(LNodes* L,int tou)
+{
+	LNodes* p;
+	int re = 0;
+	if (tou)
+	{
+		if (L->next == NULL)
+			return 0;
+		else
+		{
+			p = L->next;
+			while (p)
+			{
+				re++;
+				p = p->next;
+			}
+
+			return re;
+		}
+	}
+	else
+	{
+		if (L == NULL)
+			return 0;
+		else
+		{
+			p = L;
+			while (p)
+			{
+				re++;
+				p = p->next;
+			}
+			return re;
+		}
+	}
+
+	return 0;
+}
+
+////3、按值查找
+
+
+////4、按序号查找
+
+////5、插入操作
+
+////6、删除操作
+
+////7、输出操作
+//输出链表内所有元素的数据
+void LinkedOutput(LinkedList L, int tou)
+{
+	//put(str);
+	if (tou)
+	{
+		LNodes* p = L->next;
+		while (p != NULL)
+		{
+			cout << p->data << " ";
+			p = p->next;
+
+		}
+	}
+	else
+	{
+		LNodes* p = L;
+		while (p != NULL)
+		{
+			cout << p->data << " ";
+			p = p->next;
+		}
+	}
+
+	cout << endl;
+}
+
+////8、判空操作
+int isEmpty(LNodes* L, int tou)
+{
+	if (tou)
+	{
+		if (L->next == NULL)
+			return 1;
+		else
+			return 0;
+	}
+	else
+	{
+		if (L == NULL)
+			return 1;
+		else
+			return 0;
+	}
+	return 0;
+}
+
+////9、销毁操作
+
 
 //给链表输入数据
 ////带头结点的
@@ -66,33 +169,41 @@ void LinkedInput(LinkedList &L, int a[], int length,int tou) {
 	
 }
 
-//输出链表内所有元素的数据
-void LinkedOutput(LinkedList L,int tou)
-{
-	//put(str);
+
+void LinkedInput(LinkedList& L, int tou) {
+	/*参数:
+	tou:
+		1:初始化成带头结点的
+		0：~不带头节点的
+	*/
+	int* a;
+	a = CreatRand(0);
+	int length = a[0];
 	if (tou)
 	{
-		LNodes* p = L->next;
-		while (p != NULL)
+		LinkedList q = L;
+		for (int i = length; i > 0; --i)
 		{
-			cout << p->data << " ";
-			p = p->next;
-
+			LNodes* p = (LinkedList)malloc(sizeof(LNodes));
+			p->data = a[i];
+			p->next = q->next;
+			q->next = p;
 		}
 	}
 	else
 	{
-		LNodes* p = L;
-		while (p != NULL)
+		LinkedList q = L;
+		//q->data = a[0];
+		for (int i = length; i > 0; --i)
 		{
-			cout << p->data << " ";
-			p = p->next;
+			LNodes* p = (LinkedList)malloc(sizeof(LNodes));
+			p->data = a[i];
+			p->next = L;
+			L = p;
 		}
 	}
-	
-	cout << endl;
-}
 
+}
 
 //删除数值范围在mink~maxk的节点的函数
 void Delete_min_max(LinkedList &L, int mink, int maxk)
@@ -330,6 +441,55 @@ LinkedList Merge_danlianbiao_0202(LinkedList L1, LinkedList L2)
 		re->next = p2;
 		p2 = st->next;
 	}
+
+	return re;
+}
+
+
+//单链表合并函数
+/*
+进行同时扫描，没有使用逆置函数
+要求递增有序
+另外开启空间
+*/
+LinkedList Merge_danlianbiao_03(LinkedList L1, LinkedList L2)
+{
+	LinkedList p1 = L1->next;
+	LinkedList p2 = L2->next;
+	LinkedList s1 = L1, s2 = L2, re, st;
+	int flag = 0;
+
+	re = (LinkedList)malloc(sizeof(LNodes));
+	re->next = NULL;
+	st = re;
+
+
+	while (p2 != NULL && p1 != NULL)
+	{
+		LinkedList p0;
+		p0 = (LinkedList)malloc(sizeof(LNodes));
+		if (p1->data > p2->data)
+		{
+			p0->data = p2->data;
+
+			p2 = p2->next;
+		}
+		else
+		{
+			p0->data = p1->data;
+
+			p1 = p1->next;
+		}
+		p0->next = st->next;
+		st->next = p0;
+		st = st->next;
+	}
+
+	while (p1 != NULL || p2 != NULL)
+	{
+
+	}
+
 
 	return re;
 }

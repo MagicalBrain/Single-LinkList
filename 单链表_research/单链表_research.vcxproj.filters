@@ -20,7 +20,13 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="danlianbiao.h">
+    <ClInclude Include="LinkList.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFunction.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CreatFunction.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

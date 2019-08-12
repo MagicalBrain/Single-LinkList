@@ -248,10 +248,69 @@ int LinkListInsert(LNodes* L, int tou, int e, int loca)
 }
 
 ////6¡¢É¾³ý²Ù×÷
-int LinkListDelete(LNodes* L, int tou, int loca)
+LNodes* LinkListDelete(LNodes* L, int tou, int e)
 {
 	LNodes* p, * q;
-	int num = 0, l=Length(L,tou),e;
+	int num = 0, l = Length(L, tou);
+	
+	if (tou == 1)
+	{
+		if (L->next != NULL)
+		{
+			p = L->next;
+			q = L;
+			while (p)
+			{
+				if (p->data == e)
+				{
+					q->next = p->next;
+					free(p);
+					return L;
+				}
+				num++;
+				p = p->next;
+				q = q->next;
+			}
+
+		}
+	}
+	else if (tou == 0)
+	{
+		if (L != NULL)
+		{
+			q = L;
+			p = L->next;
+			if (L->data == e)
+			{
+				L = L->next;
+				free(q);
+				return L;
+			}
+			while (p)
+			{
+				if (p->data == e)
+				{
+					q->next = p->next;
+					free(p);
+					//L = q;
+					//break;
+					return L;
+				}
+				num++;
+				p = p->next;
+				q = q->next;
+			}
+
+		}
+	}
+	return NULL;
+}
+
+
+LNodes* LinkListDelete(LNodes* L, int tou, int loca, int* e)
+{
+	LNodes* p, * q;
+	int num = 0, l=Length(L,tou);
 	if (loca < 0 || loca >= l)
 	{
 		return 0;
@@ -264,13 +323,14 @@ int LinkListDelete(LNodes* L, int tou, int loca)
 
 			while (p)
 			{
-				if (num-1 == loca)
+				if (num == loca)
 				{
-					q = p->next;
-					p->next = q->next;
-					e = q->data;
+					q = p;
+					p = p->next;
+					*e = q->data;
 					free(q);
-					return e;
+					break;
+					//return e;
 				}
 				num++;
 				p = p->next;
@@ -283,24 +343,36 @@ int LinkListDelete(LNodes* L, int tou, int loca)
 		if (L != NULL)
 		{
 			p = L;
-
-			while (p)
+			if (loca > 0)
 			{
-				if (num - 1 == loca)
+				while (p)
 				{
-					q = p->next;
-					p->next = q->next;
-					e = q->data;
-					free(q);
-					return e;;
+					if (num == loca)
+					{
+						q = p;
+						p = p->next;
+						*e = q->data;
+						free(q);
+						break;
+						//return e;
+					}
+					num++;
+					p = p->next;
 				}
-				num++;
-				p = p->next;
+			}
+			else
+			{
+				q = p;
+				L = p->next;
+				L->next = p->next->next;
+				*e = q->data;
+				free(q);
+				//return e;
 			}
 			
 		}
 	}
-	return 0;
+	return L;
 }
 
 ////7¡¢Êä³ö²Ù×÷

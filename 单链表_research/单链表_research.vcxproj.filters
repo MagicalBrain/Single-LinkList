@@ -29,5 +29,8 @@
     <ClInclude Include="CreatFunction.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

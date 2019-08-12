@@ -53,8 +53,13 @@ int main()
 	//test_GetElem();
 	//test_LinkListInsert();
 	//test_LinkListDelete();
+	//test_LinkListDestroy();
 
-	test_LinkListDestroy();
+	//test_func01();
+	//test_func02();
+	//test_func03();
+	//test_func04();
+	test_func05();
 
 	return 0;
 }

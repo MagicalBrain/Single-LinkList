@@ -238,6 +238,56 @@ int test_LinkListDelete()
 	return 0;
 }
 
+int test_LinkListDestroy()
+{
+	LNodes* L;
+	int tou,re;
+	char in;
+
+	cout << "有无头结点[Y/N]：" << endl;
+	cin >> in;
+
+	switch (in)
+	{
+	case 'Y':
+		tou = 1;
+		break;
+	case 'N':
+		tou = 0;
+		break;
+	default:
+		break;
+	}
+
+	L = LinkedListInit(tou);
+	LinkedInput(L, tou);
+
+	LinkedOutput(L, tou);
+
+	L = LinkListDestroy(L, tou);
+
+	if (tou==1)
+	{
+		if (L->next==NULL)
+		{
+			cout << "销毁成功！" << endl;
+		}
+		LinkedOutput(L, tou);
+		return 1;
+	}
+	else if (tou==0)
+	{
+		if (L == NULL)
+		{
+			cout << "销毁成功！" << endl;
+		}
+		LinkedOutput(L, tou);
+		return 1;
+	}
+	cout << "销毁失败！" << endl;
+	return 0;
+}
+
 int test01()
 {
 	return 0;

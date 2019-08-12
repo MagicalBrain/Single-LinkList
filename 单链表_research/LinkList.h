@@ -305,30 +305,43 @@ int LinkListDelete(LNodes* L, int tou, int loca)
 
 ////7、输出操作
 //输出链表内所有元素的数据
-void LinkedOutput(LinkedList L, int tou)
+int LinkedOutput(LinkedList L, int tou)
 {
 	//put(str);
 	if (tou)
 	{
-		LNodes* p = L->next;
-		while (p != NULL)
+		if (L->next!=NULL)
 		{
-			cout << p->data << " ";
-			p = p->next;
+			LNodes* p = L->next;
+			while (p != NULL)
+			{
+				cout << p->data << " ";
+				p = p->next;
 
+			}
+			cout << endl;
+			return 1;
 		}
+		
 	}
 	else
 	{
-		LNodes* p = L;
-		while (p != NULL)
+		if (L!=NULL)
 		{
-			cout << p->data << " ";
-			p = p->next;
+			LNodes* p = L;
+			while (p != NULL)
+			{
+				cout << p->data << " ";
+				p = p->next;
+			}
+			cout << endl;
+			return 1;
 		}
+		
 	}
 
-	cout << endl;
+	cout << "输出失败！表为空！" << endl;
+	return 0;
 }
 
 ////8、判空操作
@@ -352,6 +365,42 @@ int isEmpty(LNodes* L, int tou)
 }
 
 ////9、销毁操作
+LNodes* LinkListDestroy(LNodes* L,int tou)
+{
+	LNodes* p, *q;
+	if (tou==1)
+	{
+		if (L->next != NULL)
+		{
+			p = L->next;
+			while (p)
+			{
+				q = p;
+				p = p->next;
+				
+				free(q);
+			}
+			L->next = NULL;
+			return L;
+		}
+	}
+	else if (tou==0)
+	{
+		if (L != NULL)
+		{
+			p = L;
+			while (p)
+			{
+				q = p;
+				p = p->next;
+				free(q);
+			}
+			L = NULL;
+			return L;
+		}
+	}
+	return NULL;
+}
 
 
 //给链表输入数据

@@ -59,7 +59,12 @@ int main()
 	//test_func02();
 	//test_func03();
 	//test_func04();
-	test_func05();
+	//test_func05();
+	//test_func06();
+	//test_func07();
+	//test_func08();
+	//test_func09();
+	test_func10();
 
 	return 0;
 }

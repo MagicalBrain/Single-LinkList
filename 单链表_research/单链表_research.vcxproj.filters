@@ -32,5 +32,8 @@
     <ClInclude Include="func.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="error.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

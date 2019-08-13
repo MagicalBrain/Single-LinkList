@@ -9,6 +9,7 @@ using namespace std;
 
 void func01(LinkedList &L,int x)
 /*
+王道 P38 T1
 删除不带头节点的单链表L中所有值为x的结点
 递归实现
 */
@@ -142,18 +143,284 @@ int func05(LNodes* L)
 
 	if (L->next != NULL)
 	{
-		q = L;
 		p = L->next;
-		while (p->next)
+		q = p->next;
+		L->next = NULL;
+
+		while (p!=NULL)
 		{
-			q = q->next;
+			q = p->next;
+
+			p->next = L->next;
+			L->next = p;
+
+			p = q;
+		}
+		
+		return 1;
+	}
+	return 0;
+}
+
+int func06(LNodes* L)
+/*
+对一个带有头结点的单链表排序，递增的
+*/
+{
+	LNodes* p;
+	int l = Length(L,1);
+	int* n,t;
+
+	if (L->next != NULL)
+	{
+		n = (int*)malloc(l * sizeof(int));
+		p = L->next;
+		for (int i = 0; i < l; i++)
+		{
+			n[i] = p->data;
 			p = p->next;
 		}
-		q->next = NULL;
-		q = L->next;
-		p->next = q;
-		L->next = q;
+
+		//
+
+		for (int i = 0; i < l; i++)
+		{
+			for (int j = 1; j < l-i; j++)
+			{
+				if (n[j] < n[j - 1])
+				{
+					t = n[j];
+					n[j] = n[j - 1];
+					n[j - 1] = t;
+				}
+			}
+		}
+
+		/*
+		for (int i = 0; i < l; i++)
+		{
+			cout << n[i] << " ";
+		}
+		cout << endl;
+		*/
 		
+
+		p = L->next;
+		for (int i = 0; i < l; i++)
+		{
+			p->data = n[i];
+			p = p->next;
+		}
+
+		return 1;
+	}
+	return 0;
+}
+
+int func07(LNodes*L,int mink,int maxk)
+{
+	LNodes* p, * q;
+	int num = 0;
+
+	p = L->next;
+	q = L;
+	
+	while (p != NULL)
+	{
+		if (p->data <= mink || p->data >= maxk)
+		{
+			p = p->next;
+			q = q->next;
+		}
+		else
+		{
+			LNodes* m = p;
+			q->next = m->next;
+			free(m);
+			p = q->next;
+			num++;
+		}
+	}
+	cout << "删除的结点个数为：" << num << endl;
+	return 1;
+}
+
+int func08(LNodes* L1, LNodes* L2)
+{
+	int l1=0, l2=0,t=0,c=0,d=0;
+	LNodes* p1, * p2;
+
+	if (L1 != NULL && L2 != NULL)
+	{
+		p1 = L1;
+		p2 = L2;
+
+		while (p1)
+		{
+			p1 = p1->next;
+			l1++;
+		}
+
+		while (p2)
+		{
+			p2 = p2->next;
+			l2++;
+		}
+
+		p1 = L1;
+		p2 = L2;
+
+		if (l1 < l2)
+		{
+			c = l2 - l1;
+			d = l1;
+			while (p2)
+			{
+				p2 = p2->next;
+				
+				if (t == c)
+					break;
+				t++;
+			}
+		}
+		else
+		{
+			c = l1 - l2;
+			d = l2;
+			while (p1)
+			{
+				p1 = p1->next;
+
+				if (t == c)
+					break;
+				t++;
+			}
+		}
+		
+		for (int i = 0; i < d; i++)
+		{
+			if (p1 == NULL || p2 == NULL)
+				break;
+			if (p1 == p2->next)
+			{
+				cout << p1->data << endl;
+				//break;
+			}
+			p1 = p1->next;
+			p2 = p2->next;
+		}
+
+		return 1;
+	}
+
+	return 0;
+}
+
+int func09(LNodes* L)
+{
+	LNodes* p, * q;
+	int l = Length(L, 1), t;
+
+	p = L->next;
+
+	if (p != NULL)
+	{
+		q = p->next;
+		for (int i = 0; i < l; i++)
+		{
+			while (q)
+			{
+				if (p->data > q->data)
+				{
+					t = q->data;
+					q->data = p->data;
+					p->data = t;
+				}
+				p = p->next;
+				q = q->next;
+			}
+			p = L->next;
+			q = p->next;
+		}
+
+		p = L->next;
+		q = p->next;
+		L->next = NULL;
+
+		while (q)
+		{
+			cout << p->data << " ";
+			free(p);
+
+			p = q;
+			q = p->next;
+		}
+		cout << endl;
+
+		return 1;
+	}
+	return 0;
+}
+
+int func10(LNodes* L,LinkedList& L1,LinkedList &L2)
+{
+	LNodes* p, * p1, * p2,*q;
+	int num = 0;
+
+	if (L->next != NULL)
+	{
+		p = L->next;
+		q = p->next;
+		p1 = L1;
+		p2 = L2;
+
+		while (p)
+		{
+			if (num % 2)
+			{
+				p->next = p2->next;
+				p2->next = p;
+				p2 = p2->next;
+			}
+			else
+			{
+				p->next = p1->next;
+				p1->next = p;
+				p1 = p1->next;
+			}
+			p = q;
+			if (p)
+				q = p->next;
+			num++;
+		}
+
+		return 1;
+	}
+	return 0;
+}
+
+LinkedList func11(LNodes* L)
+{
+	LNodes* p, * p1, * q1, * q;
+	int num = 0, l = Length(L, 1);
+
+	LinkedList re = (LinkedList)malloc(l * sizeof(LNodes));
+	
+
+	if (L->next != NULL)
+	{
+		p = L->next;
+		q = p->next;
+
+		while (p)
+		{
+			
+			p = q;
+			if (p)
+				q = p->next;
+			num++;
+		}
+
 		return 1;
 	}
 	return 0;

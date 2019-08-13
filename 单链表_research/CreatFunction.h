@@ -3,6 +3,7 @@
 #include "LinkList.h"
 #include <time.h>
 #include <windows.h>
+#include "error.h"
 
 using namespace std;
 
@@ -11,6 +12,24 @@ CreatFunction.h:
 只放辅助测试函数
 即用来测试的另外的一些操作，包括生成随机有序序列什么的
 */
+
+//
+int Randtou()
+{
+	srand((unsigned int)time(0));
+	int re = rand();
+	//re = re % 10;
+	re = (re+1) % 2;
+	return re;
+}
+
+int Randnum(int n)
+{
+	srand((unsigned int)time(0));
+	int re = rand();
+	re = re % n;
+	return re;
+}
 
 //生成随机数列函数
 int* CreatRand(int x)

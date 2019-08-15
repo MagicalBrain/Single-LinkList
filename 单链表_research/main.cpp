@@ -64,7 +64,10 @@ int main()
 	//test_func07();
 	//test_func08();
 	//test_func09();
-	test_func10();
+	//test_func10();
+	//test_func11();
+	//test_func12();
+	test_func13();
 
 	return 0;
 }

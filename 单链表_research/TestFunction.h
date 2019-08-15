@@ -638,6 +638,99 @@ int test_func10()
 	return 0;
 }
 
+int test_func11()
+{
+	LNodes* L,*re;
+	int tou = 1;
+
+	cout << "这是有头结点的！" << endl;
+
+	L = LinkedListInit(tou);
+	re = LinkedListInit(tou);
+
+	LinkedInput(L, tou);
+
+	LinkedOutput(L, tou);
+
+	re = func11(L);
+
+	if (re)
+	{
+		cout << "分解成功！" << endl;
+		cout << "线性表1：" << endl;
+		LinkedOutput(L, tou);
+
+		cout << "线性表2：" << endl;
+		LinkedOutput(re, tou);
+	}
+	else
+	{
+		cout << "分解失败！" << endl;
+	}
+	
+	return 0;
+}
+
+int test_func12()
+{
+	LNodes* L;
+	int tou = 1;
+
+	cout << "这是有头结点的！" << endl;
+
+	L = LinkedListInit(tou);
+
+	LinkedInput(L, tou,1);
+
+	if (L->data == -1)
+	{
+		cout << "这是带头结点的单链表" << endl;
+	}
+
+	if (func12(L))
+	{
+		cout << "删除成功！" << endl;
+		LinkedOutput(L, tou);
+	}
+	else
+	{
+		cout << "删除失败！" << endl;
+	}
+
+	return 0;
+}
+
+int test_func13()
+{
+	LNodes* L1, * L2;
+	int tou = 1;
+
+	cout << "这是有头结点的！" << endl;
+
+	L1 = LinkedListInit(tou);
+	L2 = LinkedListInit(tou);
+
+	cout << endl << "输入表1" << endl;
+	LinkedInput(L1, tou, 1);
+	cout << "输入表2" << endl;
+	LinkedInput(L2, tou, 1);
+
+	cout << endl << "输出表1" << endl;
+	LinkedOutput(L1, tou);
+	cout << "输出表2" << endl;
+	LinkedOutput(L2, tou);
+
+	if (func13(L1,L2))
+	{
+		cout << "归并成功！" << endl;
+		LinkedOutput(L1, tou);
+	}
+	else
+		cout << "归并失败！" << endl;
+
+	return 0;
+}
+
 int test01()
 {
 	return 0;

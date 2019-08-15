@@ -28,7 +28,10 @@ LinkedList LinkedListInit(int tou) {
 		printf("申请内存空间失败\n");
 	}
 	if (tou)
+	{
+		L->data = -1;
 		L->next = NULL;
+	}
 	//将next设置为NULL,初始长度为0的单链表
 	else
 		L = NULL;//将next设置为NULL,初始长度为0的单链表   
@@ -518,6 +521,50 @@ void LinkedInput(LinkedList& L, int tou) {
 	*/
 	int* a;
 	a = CreatRand(0);
+	int length = a[0];
+	if (tou)
+	{
+		LinkedList q = L;
+		for (int i = length; i > 0; --i)
+		{
+			LNodes* p = (LinkedList)malloc(sizeof(LNodes));
+			p->data = a[i];
+			p->next = q->next;
+			q->next = p;
+		}
+	}
+	else
+	{
+		LinkedList q = L;
+		//q->data = a[0];
+		for (int i = length; i > 0; --i)
+		{
+			LNodes* p = (LinkedList)malloc(sizeof(LNodes));
+			p->data = a[i];
+			p->next = L;
+			L = p;
+		}
+	}
+
+}
+
+void LinkedInput(LinkedList& L, int tou,int x) {
+	/*参数:
+	tou:
+		1:初始化成带头结点的
+		0：~不带头节点的
+	*/
+	int* a;
+	switch (x)
+	{
+	case 1:
+		a = CreatRand(1);
+		break;
+	default:
+		a = CreatRand(0);
+		break;
+	}
+	
 	int length = a[0];
 	if (tou)
 	{

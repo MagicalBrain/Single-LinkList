@@ -404,24 +404,176 @@ LinkedList func11(LNodes* L)
 	LNodes* p, * p1, * q1, * q;
 	int num = 0, l = Length(L, 1);
 
-	LinkedList re = (LinkedList)malloc(l * sizeof(LNodes));
-	
+	LinkedList re = LinkedListInit(1);
 
 	if (L->next != NULL)
 	{
 		p = L->next;
-		q = p->next;
+		q = L;
+		q1 = p->next;
+
+		p1 = re;
+
+		while (q)
+		{
+
+			if (num % 2)
+			{
+				q->next = p->next;
+				p->next = p1->next;
+				p1->next = p;
+
+				p1 = p1->next;
+				//cout << "表2：" << p1->data << endl;
+
+				if (q1 == NULL)
+				//线性表长度为偶数时跳出循环的条件
+				{
+					break;
+				}
+				else if (q1->next == NULL)
+				//线性表长度为奇数时跳出循环的条件
+					break;
+				//能不能想个办法统一起来？
+			
+				p = q1;
+				q1 = p->next;
+			}
+			else
+			{
+				//cout << "表1：" << p->data << endl;
+				q = q->next;
+				p = p->next;
+				q1 = q1->next;
+			}
+			num++;
+		}
+		return re;
+	}
+	return NULL;
+}
+
+int func12(LNodes* L)
+{
+	LNodes* p, * q;
+
+	if (L->data == -1)
+	{
+		if (L->next != NULL)
+		{
+			p = L->next;
+			q = L;
+
+			while (p)
+			{
+				if (p->data == q->data)
+				{
+					q->next = p->next;
+				}
+				else
+					q = q->next;
+				p = p->next;
+			}
+
+			return 1;
+		}
+	}
+	else
+	{
+		q = L;
+		p = L->next;
 
 		while (p)
 		{
-			
-			p = q;
-			if (p)
-				q = p->next;
-			num++;
+			if (p->data == q->data)
+			{
+				q->next = p->next;
+			}
+			else
+				q = q->next;
+			p = p->next;
 		}
 
 		return 1;
 	}
+
 	return 0;
+}
+
+int func13(LinkedList& L1, LinkedList L2)
+//默认为带头结点的单链表
+{
+	LNodes* p1, * p2, * q1, * q2, * r1, * r2, * re;
+
+	if (L1->next == NULL && L2->next == NULL)
+	{
+		return 0;
+	}
+
+	re = L1;
+
+	p1 = L1->next;
+	p2 = L2->next;
+
+	q1 = p1->next;
+	q2 = p2->next;
+
+	while (p1 != NULL && p2 != NULL)
+	{
+		if (p1->data > p2->data)
+		{
+			p2->next = re->next;
+			re->next = p2;
+			p2 = q2;
+		}
+		else
+			p1 = p1->next;
+
+		re = re->next;
+
+		if (p2->next != NULL)
+		{
+			q2 = p2->next;
+		}
+	}
+	//如果有一个表的元素还有剩的话：
+	if (p2 != NULL)
+	{
+		p1 = L1->next;
+		while (p1->next != NULL)
+		{
+			p1 = p1->next;
+		}
+
+		q2 = p2->next;
+		while (p2 != NULL)
+		{
+			q2 = q2->next;
+
+			p2->next = p1->next;
+			p1->next = p2;
+
+			p2 = q2;
+		}
+	}
+
+	//开始逆置：
+	/*
+	p1 = L1->next;
+	q1 = p1->next;
+	L1->next = NULL;
+
+	while (p1 != NULL)
+	{
+		q1 = p1->next;
+
+		p1->next = L1->next;
+		L1->next = p1;
+
+		p1 = q1;
+	}
+	*/
+	
+
+	return 1;
 }

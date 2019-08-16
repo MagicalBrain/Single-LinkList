@@ -704,6 +704,8 @@ int test_func13()
 {
 	LNodes* L1, * L2;
 	int tou = 1;
+	int a1[] = { 4 ,15 ,15 ,21 ,33 ,34 ,34 ,37 ,44 ,48 };
+	int a2[] = { 1 ,4 ,4 ,8 ,10 ,11 ,13 ,15 ,17 ,19 ,22 ,23 ,36 ,39 ,41 ,45 ,45 ,45 ,46 ,48 ,49 ,49 ,51 ,54 ,54 ,56 ,57 ,61 ,62 ,66 ,68 ,69 ,73 ,78 ,81 ,81 ,83 ,84 ,85 ,86 ,89 ,89 ,89 ,92 ,92 ,92 ,93 ,95 ,97 ,97 ,98 };
 
 	cout << "这是有头结点的！" << endl;
 
@@ -712,8 +714,10 @@ int test_func13()
 
 	cout << endl << "输入表1" << endl;
 	LinkedInput(L1, tou, 1);
+	//LinkedInput(L1, a1, 10, tou);
 	cout << "输入表2" << endl;
 	LinkedInput(L2, tou, 1);
+	//LinkedInput(L2, a2, 51, tou);
 
 	cout << endl << "输出表1" << endl;
 	LinkedOutput(L1, tou);

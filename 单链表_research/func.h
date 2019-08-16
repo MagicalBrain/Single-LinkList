@@ -510,70 +510,64 @@ int func13(LinkedList& L1, LinkedList L2)
 		return 0;
 	}
 
-	re = L1;
-
 	p1 = L1->next;
 	p2 = L2->next;
 
 	q1 = p1->next;
 	q2 = p2->next;
 
+	re = L1;
+	re->next = NULL;
+
 	while (p1 != NULL && p2 != NULL)
 	{
-		if (p1->data > p2->data)
+		if (p1->data < p2->data)
 		{
-			p2->next = re->next;
-			re->next = p2;
-			p2 = q2;
+			q1 = p1->next;
+
+			p1->next = re->next;
+			re->next = p1;
+
+			p1 = q1;
 		}
 		else
-			p1 = p1->next;
-
-		re = re->next;
-
-		if (p2->next != NULL)
 		{
 			q2 = p2->next;
-		}
-	}
-	//如果有一个表的元素还有剩的话：
-	if (p2 != NULL)
-	{
-		p1 = L1->next;
-		while (p1->next != NULL)
-		{
-			p1 = p1->next;
-		}
 
-		q2 = p2->next;
-		while (p2 != NULL)
-		{
-			q2 = q2->next;
-
-			p2->next = p1->next;
-			p1->next = p2;
+			p2->next = re->next;
+			re->next = p2;
 
 			p2 = q2;
 		}
 	}
 
-	//开始逆置：
-	/*
-	p1 = L1->next;
-	q1 = p1->next;
-	L1->next = NULL;
-
-	while (p1 != NULL)
+	if (p1 != NULL)
 	{
 		q1 = p1->next;
+		while (p1)
+		{
+			q1 = p1->next;
 
-		p1->next = L1->next;
-		L1->next = p1;
+			p1->next = re->next;
+			re->next;
 
-		p1 = q1;
+			p1 = q1;
+		}
 	}
-	*/
-	
 
+	if (p2 != NULL)
+	{
+		q2 = p2->next;
+		while (p2)
+		{
+			q2 = p2->next;
+
+			p2->next = re->next;
+			re->next = p2;
+
+			p2 = q2;
+		}
+	}
+	
 	return 1;
 }

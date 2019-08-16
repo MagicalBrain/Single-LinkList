@@ -390,7 +390,7 @@ int LinkedOutput(LinkedList L, int tou)
 			LNodes* p = L->next;
 			while (p != NULL)
 			{
-				cout << p->data << " ";
+				cout << p->data << " ,";
 				p = p->next;
 
 			}

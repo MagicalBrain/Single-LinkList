@@ -571,3 +571,43 @@ int func13(LinkedList& L1, LinkedList L2)
 	
 	return 1;
 }
+
+LinkedList func14(LNodes* L1,LNodes* L2)
+{
+	int tou = 1;
+	LinkedList re;
+	LNodes*p1, *p2,*t;
+	re = LinkedListInit(tou);
+
+	
+	p1 = L1->next;
+	p2 = L2->next;
+
+
+	if (L1->next != NULL && L2->next != NULL)
+	{
+		while (p1 != NULL)
+		{
+			p2 = L2->next;
+			while (p2 != NULL)
+			{
+				if (p1->data == p2->data)
+				{
+					t = (LNodes*)malloc(sizeof(LNodes));
+					t->data = p1->data;
+
+					t->next = re->next;
+					re->next = t;
+				}
+				p2 = p2->next;
+			}
+			
+			p1 = p1->next;
+			
+		}
+		
+
+		return re;
+	}
+	return NULL;
+}

@@ -915,3 +915,24 @@ int test_func19()
 		cout << "处理失败！" << endl;
 	return 0;
 }
+int test_func21()
+{
+	LinkedList L;
+	int n;
+
+	L = LinkedListInit(1);
+
+	LinkedInput(L, 1);
+
+	LinkedOutput(L, 1);
+
+	cout << "输入倒数第几：" << endl;
+	cin >> n;
+
+	if (func21(L, n) != 1)
+		cout << "没找到！" << endl;
+
+	LinkedOutput(L, 1);
+
+	return 0;
+}

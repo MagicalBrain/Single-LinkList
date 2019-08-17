@@ -761,3 +761,34 @@ int func19(LinkedList& L)
 
 	return 1;
 }
+
+int func21(LinkedList L,int k)
+/*
+找出表中倒数第k个数，存在则输出其值，返回1，否则返回0
+*/
+{
+	LNodes*p, *q;
+	int num = 0;
+	if (L->next != NULL && k>0)
+	{
+		q = L->next;
+		p = L->next;
+
+		while (num<k)
+		{
+			if (p == NULL)
+				return 0;
+			p = p->next;
+			num++;
+		}
+
+		while (p != NULL)
+		{
+			p = p->next; 
+			q = q->next;
+		}
+		cout << "找到了，其值为倒数第" << k << "个数为：" << q->data << endl;
+		return 1;
+	}
+	return 0;
+}

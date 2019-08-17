@@ -729,3 +729,35 @@ int func18(LinkedList& L1,LNodes* L2)
 	}
 	return 1;
 }
+
+int func19(LinkedList& L)
+{
+	LNodes *p, *q;
+	int t;
+
+	if (L->next == L)
+		return 0;
+
+	while (L->next != L)
+	{
+		p = L->next;
+		q = L;
+		
+		while (p->next != L)
+		{
+			p = p->next;
+			q = q->next;
+			if (p->data > q->data)
+			{
+				t = p->data;
+				p->data = q->data;
+				q->data = t;
+			}
+		}
+		q->next = p->next;
+		cout << p->data << " ,";
+	}
+	cout << endl;
+
+	return 1;
+}

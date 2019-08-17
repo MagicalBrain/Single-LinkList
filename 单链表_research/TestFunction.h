@@ -895,3 +895,23 @@ int test_func18()
 		cout << "链接失败！" << endl;
 	return 0;
 }
+
+int test_func19()
+{
+	LinkedList L;
+
+	L = CircleLinkedListInit(1);
+	
+	CircleLinkedInput(L, 1);
+
+	CircleLinkedOutput(L, 1);
+
+	if (func19(L))
+	{
+		cout << "处理成功！" << endl;
+		CircleLinkedOutput(L, 1);
+	}
+	else
+		cout << "处理失败！" << endl;
+	return 0;
+}

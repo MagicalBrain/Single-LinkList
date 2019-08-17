@@ -579,10 +579,8 @@ LinkedList func14(LNodes* L1,LNodes* L2)
 	LNodes*p1, *p2,*t;
 	re = LinkedListInit(tou);
 
-	
 	p1 = L1->next;
 	p2 = L2->next;
-
 
 	if (L1->next != NULL && L2->next != NULL)
 	{
@@ -601,13 +599,16 @@ LinkedList func14(LNodes* L1,LNodes* L2)
 				}
 				p2 = p2->next;
 			}
-			
-			p1 = p1->next;
-			
+			p1 = p1->next;	
 		}
 		
-
 		return re;
 	}
 	return NULL;
+}
+
+int  func18()
+{
+
+	return 0;
 }

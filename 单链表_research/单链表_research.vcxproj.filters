@@ -20,20 +20,20 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkList.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TestFunction.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="CreatFunction.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="func.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="error.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="func.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinkList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TestFunction.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -832,7 +832,7 @@ int test_func16()
 	LinkedInput(L1, a1, 10, tou);
 	cout << "输入表2" << endl;
 	//LinkedInput(L2, tou, 1);
-	LinkedInput(L2, a2, 4, tou);
+	LinkedInput(L2, a2, 3, tou);
 
 	cout << endl << "输出表1" << endl;
 	LinkedOutput(L1, tou);
@@ -849,7 +849,49 @@ int test_func16()
 	return 0;
 }
 
-int test01()
+int test_CirclrLinkedList()
 {
+	LinkedList L;
+	LNodes*p;
+
+	L = CircleLinkedListInit(1);
+
+	CircleLinkedInput(L, 1);
+
+	p = L->next;
+	while (p != L)
+	{
+		p = p->next;
+	}
+
+	CircleLinkedOutput(p, 1);
+
+	return 0;
+}
+
+int test_func18()
+{
+	LinkedList L1,L2;
+
+	L1 = CircleLinkedListInit(1);
+	L2 = CircleLinkedListInit(1);
+
+	cout << "输入L1:" << endl;
+	CircleLinkedInput(L1, 1);
+	cout << "输入L2:" << endl;
+	CircleLinkedInput(L2, 1);
+
+	cout << "输出L1:" << endl;
+	CircleLinkedOutput(L1, 1);
+	cout << "输出L2:" << endl;
+	CircleLinkedOutput(L2, 1);
+
+	if (func18(L1, L2))
+	{
+		cout << "链接成功！" << endl;
+		CircleLinkedOutput(L1, 1);
+	}
+	else
+		cout << "链接失败！" << endl;
 	return 0;
 }

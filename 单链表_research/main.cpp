@@ -55,6 +55,8 @@ int main()
 	//test_LinkListDelete();
 	//test_LinkListDestroy();
 
+	//test_CirclrLinkedList();
+
 	//test_func01();
 	//test_func02();
 	//test_func03();
@@ -70,7 +72,8 @@ int main()
 	//test_func13();
 	//test_func14();
 	//test_func15();
-	test_func16();
+	//test_func16();
+	test_func18();
 
 	return 0;
 }

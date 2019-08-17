@@ -3,6 +3,7 @@
 #include <iostream>
 #include <Windows.h>
 #include "LinkList.h"
+#include "CircleLinkedList.h"
 #include "TestFunction.h"
 
 using namespace std;
@@ -695,4 +696,36 @@ int func16(LNodes*L1,LNodes*L2)
 			return 0;
 	}
 	return 0;
+}
+
+int func18(LinkedList& L1,LNodes* L2)
+{
+	if (L1->next == L1 || L2->next == L2)
+		return 0;
+
+	LNodes*p1, *p2, *q2;
+	p1 = L1->next;
+	p2 = L2->next;
+
+	while (p1->next != L1)
+	{
+		p1 = p1->next;
+	}
+
+	while (L2->next != L2)
+	{
+		p2 = L2->next;
+		q2 = L2;
+
+		while (p2->next != L2)
+		{
+			p2 = p2->next;
+			q2 = q2->next;
+		}
+		q2->next = p2->next;
+
+		p2->next = p1->next;
+		p1->next = p2;
+	}
+	return 1;
 }

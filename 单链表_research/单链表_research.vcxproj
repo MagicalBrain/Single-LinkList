@@ -149,6 +149,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CharLinkedList.h" />
     <ClInclude Include="CircleLinkedList.h" />
     <ClInclude Include="CreatFunction.h" />
     <ClInclude Include="error.h" />

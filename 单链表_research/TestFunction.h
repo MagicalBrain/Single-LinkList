@@ -2,7 +2,9 @@
 #include <iostream>
 #include <Windows.h>
 #include "LinkList.h"
+#include "CharLinkedList.h"
 #include "func.h"
+#include <list>
 
 using namespace std;
 
@@ -933,6 +935,90 @@ int test_func21()
 		cout << "没找到！" << endl;
 
 	LinkedOutput(L, 1);
+
+	return 0;
+}
+
+
+/*------------------------*/
+
+void LinkedInput(list L, char a[], int length, int tou) {
+	/*参数:
+	tou:
+	1:初始化成带头结点的
+	0：~不带头节点的
+	*/
+
+	if (tou)
+	{
+		SLinkedList q = L;
+		for (int i = length - 1; i >= 0; --i)
+		{
+			SLNodes* p = (SLinkedList)malloc(sizeof(SLNodes));
+			p->data = a[i];
+			p->next = q->next;
+			q->next = p;
+		}
+	}
+	else
+	{
+		SLinkedList q = L;
+		//q->data = a[0];
+		for (int i = length; i >= 0; --i)
+		{
+			SLNodes* p = (SLinkedList)malloc(sizeof(SLNodes));
+			p->data = a[i];
+			p->next = L;
+			L = p;
+		}
+	}
+
+}
+
+int test_func22()
+{
+	//list<char>()
+	SLinkedList L1, L2,re=NULL;
+
+	char a1[] = "loading";
+	char a2[] = "string";
+
+	L1 = SLinkedListInit(1);
+	L2 = SLinkedListInit(1);
+
+	cout << "输入L1:" << endl;
+	SLinkedInput(L1, a1,7,1);
+	cout << "输入L2:" << endl;
+	SLinkedInput(L2, a2,6,1);
+
+	SLNodes *p1, *q1,*p2;
+	p1 = L1->next;
+	p2 = L2->next;
+
+	while (p1->data != 'i')
+	{
+		p1 = p1->next;
+	}
+	while (p2->data != 'i')
+	{
+		p2 = p2->next;
+	}
+
+	L1[4] = L2[3];
+	L1[5] = L2[4];
+	L1[6] = L2[5];
+	
+
+	cout << "输出L1:" << endl;
+	SLinkedOutput(L1, 1);
+	cout << "输出L2:" << endl;
+	SLinkedOutput(L2, 1);
+
+	re = func22(L1, L2);
+	if (re != NULL)
+	{
+		cout << "找到了！" << re << endl;
+	}
 
 	return 0;
 }

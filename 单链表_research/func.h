@@ -5,6 +5,7 @@
 #include "LinkList.h"
 #include "CircleLinkedList.h"
 #include "TestFunction.h"
+#include "CharLinkedList.h"
 
 using namespace std;
 
@@ -791,4 +792,58 @@ int func21(LinkedList L,int k)
 		return 1;
 	}
 	return 0;
+}
+
+SLinkedList func22(SLinkedList L1, SLinkedList L2)
+{
+	SLNodes *p1, *q1, *p2, *q2,*re=NULL;
+	int flag = 0;
+	if (L1->next != NULL && L2->next != NULL)
+	{
+		p1 = L1->next;
+
+		while (p1 != NULL)
+		{
+			p2 = L2->next;
+			q2 = L2;
+
+			while (p2!= NULL)
+			{
+				if (p1 == p2)
+				{
+					q2->next = p2->next;
+					flag = 1;
+					re = p1;
+					break;
+				}
+				p2 = p2->next;
+				q2 = q2->next;
+			}
+
+			//找到两相等的结点，验证是否是同一个后缀
+			if (flag)
+			{
+				flag = 0;
+				while (p1 != NULL && p1 == p2)
+				{
+					p1 = p1->next;
+					p2 = p2->next;
+				}
+
+				if (p1 == NULL && p2 == NULL)
+				{
+					flag = 1;
+					//re = p1;
+					break;
+					//return re;
+				}
+			}
+			p1 = p1->next;
+		}
+
+		if (flag)
+			return re;
+
+	}
+	return NULL;
 }

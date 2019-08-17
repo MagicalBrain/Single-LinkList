@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "LinkList.h"
+//#include "LinkList.h"
 #include <time.h>
 #include <windows.h>
 #include "error.h"

@@ -776,6 +776,45 @@ int test_func14()
 	return 0;
 }
 
+int test_func15()
+{
+	LNodes* L1, * L2;
+	LinkedList re;
+	int tou = 1;
+
+	cout << "这是有头结点的！" << endl;
+
+	L1 = LinkedListInit(tou);
+	L2 = LinkedListInit(tou);
+
+	cout << endl << "输入表1" << endl;
+	LinkedInput(L1, tou, 1);
+	//LinkedInput(L1, a1, 10, tou);
+	cout << "输入表2" << endl;
+	LinkedInput(L2, tou, 1);
+	//LinkedInput(L2, a2, 51, tou);
+
+	cout << endl << "输出表1" << endl;
+	LinkedOutput(L1, tou);
+	cout << "输出表2" << endl;
+	LinkedOutput(L2, tou);
+
+	if (func15(L1, L2))
+	{
+		cout << "归并成功！" << endl;
+		LinkedOutput(L1, tou);
+	}
+	else
+		cout << "归并失败！" << endl;
+
+	cout << endl << "输出表1" << endl;
+	LinkedOutput(L1, tou);
+	cout << "输出表2" << endl;
+	LinkedOutput(L2, tou);
+
+	return 0;
+}
+
 int test01()
 {
 	return 0;

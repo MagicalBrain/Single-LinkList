@@ -579,8 +579,10 @@ LinkedList func14(LNodes* L1,LNodes* L2)
 	LNodes*p1, *p2,*t;
 	re = LinkedListInit(tou);
 
+	
 	p1 = L1->next;
 	p2 = L2->next;
+
 
 	if (L1->next != NULL && L2->next != NULL)
 	{
@@ -599,16 +601,98 @@ LinkedList func14(LNodes* L1,LNodes* L2)
 				}
 				p2 = p2->next;
 			}
-			p1 = p1->next;	
+			
+			p1 = p1->next;
+			
 		}
 		
+
 		return re;
 	}
 	return NULL;
 }
 
-int  func18()
+int func15(LinkedList& L1, LNodes* L2)
 {
+	LNodes* p1, * p2, * q1, * q2;
+	int flag = 0;
 
+	if (L1->next!= NULL &&L2->next!=NULL)
+	{
+		p1 = L1->next;
+		p2 = L2->next;
+
+		q1 = L1;
+		q2 = L2;
+
+		while (p1)
+		{
+			p2 = L2->next;
+			q2 = L2;
+			flag = 0;
+
+			while (p2)
+			{
+				if (p1->data == p2->data)
+				{
+					flag++;
+
+					q2->next = p2->next;
+				}
+				else
+					q2 = q2->next;
+				p2 = p2->next;
+				
+			}
+
+			if (flag == 0)
+			{
+				q1->next = p1->next;
+			}
+			else
+				q1 = q1->next;
+
+			p1 = p1->next;
+			
+		}
+
+		return 1;
+	}
+
+	return 0;
+}
+
+int func16(LNodes*L1,LNodes*L2)
+{
+	LNodes* p1, * p2, * q1, * q2;
+	int flag = 0, flag1 = 0;
+
+	if (L1->next != NULL && L2->next != NULL)
+	{
+		p1 = L1->next;
+		p2 = L2->next;
+
+		q1 = p1->next;
+		q2 = L2;
+
+		while (p1 && p2)
+		{
+			q1 = p1->next;
+
+			if (p1->data == p2->data)
+			{
+				p2 = p2->next;
+				p1 = p1->next;
+			}
+
+			p1 = q1;
+
+		}
+
+		if (p2 == NULL)
+			return 1;
+		else
+			return 0;
+	}
 	return 0;
 }

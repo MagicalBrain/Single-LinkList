@@ -942,7 +942,7 @@ int test_func21()
 
 /*------------------------*/
 
-void LinkedInput(list L, char a[], int length, int tou) {
+void LinkedInput(SLinkedList L, char a[], int length, int tou) {
 	/*参数:
 	tou:
 	1:初始化成带头结点的
@@ -995,18 +995,19 @@ int test_func22()
 	p1 = L1->next;
 	p2 = L2->next;
 
-	while (p1->data != 'i')
+	while (p2->next)
 	{
-		p1 = p1->next;
-	}
-	while (p2->data != 'i')
-	{
+		if (p2->data == 'i')
+			break;
 		p2 = p2->next;
 	}
 
-	L1[4] = L2[3];
-	L1[5] = L2[4];
-	L1[6] = L2[5];
+	while (p1->next)
+	{
+		if (p1->next->data == 'i')
+			p1->next = p2;
+		p1 = p1->next;
+	}
 	
 
 	cout << "输出L1:" << endl;

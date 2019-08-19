@@ -980,16 +980,19 @@ int test_func22()
 	//list<char>()
 	SLinkedList L1, L2,re=NULL;
 
-	char a1[] = "loading";
+	char a1[] = "ing";
 	char a2[] = "string";
+
+	int l1 = sizeof(a1) / sizeof(char) - 1;
+	int l2 = sizeof(a2) / sizeof(char) - 1;
 
 	L1 = SLinkedListInit(1);
 	L2 = SLinkedListInit(1);
 
 	cout << "ÊäÈëL1:" << endl;
-	SLinkedInput(L1, a1,7,1);
+	SLinkedInput(L1, a1,l1,1);
 	cout << "ÊäÈëL2:" << endl;
-	SLinkedInput(L2, a2,6,1);
+	SLinkedInput(L2, a2,l2,1);
 
 	SLNodes *p1, *q1,*p2;
 	p1 = L1->next;
